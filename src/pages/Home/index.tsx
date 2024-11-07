@@ -16,11 +16,11 @@ export function Home() {
             <div className="flex">
               <aside className="flex gap-4 items-center">
                 <img
-                  src="https://static.tvtropes.org/pmwiki/pub/images/screenshot_2023_02_15_74049_pm.png"
+                  src="https://engineering.unl.edu/images/staff/Kayla-Person.jpg"
                   className="w-[56px] h-[56px] rounded-full shadow-md"
                 />
                 <div>
-                  <p className="text-white text-sm font-light">Olá, Assane</p>
+                  <p className="text-white text-sm font-light">Olá, Kayla</p>
                   <p className="text-white text-sm font-light">
                     Bem-vindo ao Imunizapp
                   </p>
