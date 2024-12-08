@@ -91,9 +91,9 @@ export function Calendario() {
         ))}
 
         {monthDays?.map((date) => (
-          <label
+          <button
             key={date.fullDate.toDateString()}
-            htmlFor={date.fullDate.toDateString()}
+            // htmlFor={date.fullDate.toDateString()}
             className={`text-sm p-2 relative max-w-[36px] max-h-[36px] aspect-square flex items-center justify-center mx-auto ${
               isCurrentDate(date.fullDate.toString()) &&
               !isSelectedDate(date.fullDate)
@@ -104,17 +104,19 @@ export function Calendario() {
                 ? "bg-[#AC85D0] text-white rounded-full"
                 : ""
             } ${!isCurrentMonth(date.fullDate) ? "text-gray-300" : ""}`}
+            onClick={() => setSelectedDate(date.fullDate)}
+            type="button"
           >
-            <input
+            {/* <input
               id={date.fullDate.toDateString()}
               className="absolute inset-0 appearance-none"
               type="radio"
               value={date.fullDate.toDateString()}
               disabled={!isCurrentMonth(date.fullDate)}
               onChange={selectDate}
-            />
+            /> */}
             {date.day}
-          </label>
+          </button>
         ))}
       </form>
     </>
