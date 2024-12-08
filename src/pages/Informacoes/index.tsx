@@ -1,14 +1,31 @@
 import { Link } from "react-router-dom";
 import { ArrowBackIcon } from "../../components/icons/back-arrow";
-import { PlaceIcon } from "../../components/icons/place";
-import { GameIcon } from "../../components/icons/game";
-import { PregnantIcon } from "../../components/icons/pregnant";
-import { BuildingIcon } from "../../components/icons/building";
-import { ElderlyIcon } from "../../components/icons/elderly";
-import { TravelerIcon } from "../../components/icons/traveler";
+
 import { SearchIcon } from "../../components/icons/search";
+import { useAllPrismicDocumentsByType } from "@prismicio/react";
+import { useMemo } from "react";
 
 export function Informacoes() {
+  const [documents, stateInfo] = useAllPrismicDocumentsByType("informacoes");
+
+  const data = useMemo(() => {
+    return (
+      documents?.map((document) => {
+        const sliceInfo = document.data.slices[0].primary;
+
+        return {
+          uuid: document.uid,
+          titulo: sliceInfo.titulo_botao,
+          imagem: sliceInfo.icone_botao.url,
+        };
+      }) ?? []
+    );
+  }, [documents]);
+
+  if (stateInfo.state !== "loaded") {
+    return <div></div>;
+  }
+
   return (
     <>
       <header className="gradient-purple p-4 h-[256px]">
@@ -20,51 +37,23 @@ export function Informacoes() {
         </div>
       </header>
       <main className="bg-white -mt-[172px] gap-4 rounded-tr-[52px] pt-12 grid grid-cols-2 px-4">
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <PlaceIcon />
-          Crianças
-        </Link>
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <GameIcon />
-          Adolescentes
-        </Link>
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <PregnantIcon />
-          Gestantes
-        </Link>
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <BuildingIcon />
-          Trabalhador
-        </Link>
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <ElderlyIcon />
-          Idosos
-        </Link>
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <TravelerIcon />
-          Viajantes
-        </Link>
+        {data.map((item) => (
+          <Link
+            to={`/post/${item.uuid}`}
+            key={item.uuid}
+            className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+          >
+            <img
+              src={item.imagem}
+              alt="Icone"
+              className="max-w-[54px] max-h-[54px]"
+            />
+            {item.titulo}
+          </Link>
+        ))}
 
         <Link
-          to="/post/duvidas-frequentes"
+          to="/post/informacoes_duvidas_frequentes?by=type"
           className="col-span-2 p-6 flex flex-col items-center justify-center bg-[#AC85D0] text-white rounded-xl mt-4"
         >
           <SearchIcon />

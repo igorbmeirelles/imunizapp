@@ -3,6 +3,7 @@ import { ArrowBackIcon } from "../../components/icons/back-arrow";
 import { useMemo, useState } from "react";
 import { ChevronLeft } from "../../components/icons/chevron_left";
 import { ChevronRight } from "../../components/icons/chevron_right";
+import { usePrismicDocumentsByType } from "@prismicio/react";
 
 const daysOfWeek = ["Dom", "Seg", "Ter", "Qua", "Qui", "SEX", "SAB"];
 
@@ -10,6 +11,50 @@ export function Calendario() {
   const today = useMemo(() => new Date(), []);
 
   const [selectedDate, setSelectedDate] = useState(today);
+
+  const [document] = usePrismicDocumentsByType("calendario_de_vacinas");
+
+  const vaccinesThisMonth = useMemo((): {
+    name: string;
+    startAt: Date;
+    endsAt: Date;
+  }[] => {
+    return (
+      document?.results[0].data.slices.map(
+        (slice: {
+          primary: { nome: string; comeca_em: string; temina_em: string };
+        }) => {
+          const startDate = slice.primary.comeca_em.split("-");
+          const endDate = slice.primary.temina_em.split("-");
+          return {
+            name: slice.primary.nome,
+            startAt: new Date(
+              Number(startDate[0]),
+              Number(startDate[1]),
+              Number(startDate[2])
+            ),
+            endsAt: new Date(
+              Number(endDate[0]),
+              Number(endDate[1]),
+              Number(endDate[2])
+            ),
+          };
+        }
+      ) ?? []
+    );
+  }, [document]);
+
+  const vaccineForThisDate = useMemo(() => {
+    return vaccinesThisMonth.filter((vaccine) => {
+      return (
+        selectedDate.toLocaleDateString("pt-br") >=
+          vaccine.startAt.toLocaleDateString("pt-br") &&
+        selectedDate.toLocaleDateString("pt-br") <=
+          vaccine.endsAt.toLocaleDateString("pt-br")
+      );
+    });
+  }, [selectedDate, vaccinesThisMonth]);
+
 
   const monthDays = useMemo(() => {
     const firstDayOfMonth = new Date(
@@ -26,7 +71,7 @@ export function Calendario() {
 
     const dates = [] as { day: number; fullDate: Date }[];
 
-    for (let i = Math.abs(firstDayOfMonth.getDay()) - 1; i >= 0 ; i--) {
+    for (let i = Math.abs(firstDayOfMonth.getDay()) - 1; i >= 0; i--) {
       const complementaryDate = new Date(firstDayOfMonth);
       complementaryDate.setDate(-i);
       dates.push({
@@ -144,6 +189,44 @@ export function Calendario() {
           </button>
         ))}
       </form>
+
+      {vaccineForThisDate.length > 0 ? (
+        vaccineForThisDate.map((vaccine, i) => (
+          <div key={i} className="flex gap-4 px-4 mt-4 items-baseline">
+            <div className="flex items-center justify-center flex-col bg-[#AC85D0] min-w-[57px] rounded-md p-2 text-white">
+              <span>
+                {selectedDate.toLocaleDateString("pt-BR", { weekday: "short" })}
+              </span>
+              <span className="text-center">{selectedDate.getDate()}</span>
+            </div>
+            <div>{vaccine.name}</div>
+          </div>
+        ))
+      ) : (
+        <div className="flex gap-4 px-4 mt-4 items-baseline">
+          <div className="flex items-center justify-center flex-col bg-[#AC85D0] min-w-[57px] rounded-md p-2 text-white">
+            <span>
+              {selectedDate.toLocaleDateString("pt-BR", { weekday: "short" })}
+            </span>
+            <span className="text-center">{selectedDate.getDate()}</span>
+          </div>
+          <div>Nenhuma vacina agendada. Toque para adicionar.</div>
+        </div>
+      )}
+
+      <div className="flex gap-4 px-4 mt-4 items-baseline">
+        <div className="flex items-center justify-center flex-col bg-[#713EA2] min-w-[57px] rounded-md p-2 text-white">
+          <span>{today.toLocaleDateString("pt-BR", { weekday: "short" })}</span>
+          <span className="text-center">{today.getDate()}</span>
+        </div>
+        <div>Nenhuma vacina agendada. Toque para adicionar.</div>
+      </div>
+
+      <div className="mt-4 flex px-5 sticky bottom-16">
+        <button className="p-4 rounded-full text-xl bg-purple-700 text-white aspect-square w-[64px] shadow-lg ml-auto">
+          +
+        </button>
+      </div>
     </>
   );
 }
