@@ -30,12 +30,12 @@ export function Calendario() {
             name: slice.primary.nome,
             startAt: new Date(
               Number(startDate[0]),
-              Number(startDate[1]),
+              Number(startDate[1]) - 1,
               Number(startDate[2])
             ),
             endsAt: new Date(
               Number(endDate[0]),
-              Number(endDate[1]),
+              Number(endDate[1]) - 1,
               Number(endDate[2])
             ),
           };
@@ -54,7 +54,6 @@ export function Calendario() {
       );
     });
   }, [selectedDate, vaccinesThisMonth]);
-
 
   const monthDays = useMemo(() => {
     const firstDayOfMonth = new Date(
