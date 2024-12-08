@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { HamburgerIcon } from "../../components/icons/hamburguer";
 import { PlaceIcon } from "../../components/icons/place";
 import { Shape } from "../../components/shape";
 import { SyringeSmallIcon } from "../../components/icons/syringe-small";
@@ -26,10 +25,6 @@ export function Home() {
                   </p>
                 </div>
               </aside>
-
-              <button className="bg-none ml-auto">
-                <HamburgerIcon />
-              </button>
             </div>
           </div>
         </header>
@@ -55,7 +50,7 @@ export function Home() {
           to="/calendario"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
-          <CalendarIcon color="#713EA2"/>
+          <CalendarIcon color="#713EA2" />
           Datas de vacinação
         </Link>
         <Link
@@ -66,6 +61,7 @@ export function Home() {
           Cadastro de dependentes
         </Link>
       </div>
+      
     </>
   );
 }

@@ -213,19 +213,39 @@ export function Calendario() {
         </div>
       )}
 
-      <div className="flex gap-4 px-4 mt-4 items-baseline">
-        <div className="flex items-center justify-center flex-col bg-[#713EA2] min-w-[57px] rounded-md p-2 text-white">
-          <span>{today.toLocaleDateString("pt-BR", { weekday: "short" })}</span>
-          <span className="text-center">{today.getDate()}</span>
-        </div>
-        <div>Nenhuma vacina agendada. Toque para adicionar.</div>
-      </div>
-
-      <div className="mt-4 flex px-5 sticky bottom-16">
-        <button className="p-4 rounded-full text-xl bg-purple-700 text-white aspect-square w-[64px] shadow-lg ml-auto">
-          +
-        </button>
-      </div>
+      {/* <div className="mt-4 flex px-5 sticky bottom-16">
+        <Dialog>
+          <DialogTrigger asChild>
+            <button
+              className="p-4 rounded-full text-xl bg-purple-700 text-white aspect-square w-[64px] drop-shadow-xl ml-auto"
+              type="button"
+              onClick={() => setDialogOpen(true)}
+            >
+              +
+            </button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Adicionar vacina</DialogTitle>
+            </DialogHeader>
+            <div className="flex items-center space-x-2">
+              <div className="grid flex-1 gap-2">
+                <Input placeholder="Nome da vacina" />
+              </div>
+            </div>
+            <DialogFooter className="sm:justify-start">
+              <DialogClose asChild>
+                <button
+                  className="bg-purple-700 py-2 px-4 text-white rounded-lg inline-block"
+                  type="button"
+                >
+                  Close
+                </button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div> */}
     </>
   );
 }
