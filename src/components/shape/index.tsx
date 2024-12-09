@@ -1,20 +1,22 @@
 import ShapeImg from "../../assets/shape.svg";
 import ShapeDesk from "../../assets/shape-desktop.svg";
+import { useEffect, useState } from "react";
 
 export function Shape() {
+  const [size, setSize] = useState(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setSize(window.innerWidth);
+    });
+  });
+
   return (
     <figure>
-      <source
-        srcSet={ShapeDesk}
-        media="(min-width: 768px)"
-        className="w-full"
-      />
-      <source
-        srcSet={ShapeImg}
-        media="(max-width: 767px)"
-        className="w-full max-h-50"
-      />
-      <img src={ShapeImg} className="w-full max-h-50" />
+      {size > 767 ? (
+        <img src={ShapeDesk} className="w-full max-h-50" />
+      ) : (
+        <img src={ShapeImg} className="w-full max-h-50" />
+      )}
     </figure>
   );
 }
