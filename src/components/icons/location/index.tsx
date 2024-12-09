@@ -1,6 +1,7 @@
 export function LocationIcon() {
   return (
     <svg
+      className="mx-auto"
       width="28"
       height="28"
       viewBox="0 0 28 28"

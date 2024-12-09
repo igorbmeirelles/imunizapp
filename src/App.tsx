@@ -13,7 +13,7 @@ function App() {
       <div className="mt-[120px]"></div>
       <div className="bottom-0 flex fixed w-full px-4 bg-gray-100">
         <Link to="/" className="p-4 flex-grow">
-          <HomeIcon />
+          <HomeIcon className="mx-auto"/>
         </Link>
         <Link to="postos-de-vacinacao" className="p-4 flex-grow">
           <LocationIcon />

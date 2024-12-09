@@ -2,9 +2,10 @@ interface IProps {
   color?: "black" | "#713EA2";
 }
 
-export function CalendarIcon({ color="black" }: IProps) {
+export function CalendarIcon({ color = "black" }: IProps) {
   return (
     <svg
+      className="mx-auto"
       width="30"
       height="30"
       viewBox="0 0 30 30"

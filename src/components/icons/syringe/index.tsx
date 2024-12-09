@@ -1,6 +1,7 @@
 export function SyringeIcon() {
   return (
     <svg
+      className="mx-auto"
       width="40"
       height="40"
       viewBox="0 0 40 40"

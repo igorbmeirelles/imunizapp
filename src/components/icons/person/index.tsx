@@ -1,6 +1,7 @@
 export function PersonIcon() {
   return (
     <svg
+      className="mx-auto"
       width="22"
       height="28"
       viewBox="0 0 22 28"
