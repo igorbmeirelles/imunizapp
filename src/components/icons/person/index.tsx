@@ -1,7 +1,7 @@
-export function PersonIcon() {
+export function PersonIcon({ className = "" }: { className?: string }) {
   return (
     <svg
-      className="mx-auto"
+      className={className}
       width="22"
       height="28"
       viewBox="0 0 22 28"

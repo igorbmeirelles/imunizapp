@@ -1,7 +1,7 @@
-export function LocationIcon() {
+export function LocationIcon({ className = "" }: { className?: string }) {
   return (
     <svg
-      className="mx-auto"
+      className={className}
       width="28"
       height="28"
       viewBox="0 0 28 28"

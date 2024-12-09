@@ -13,24 +13,24 @@ function App() {
       <div className="mt-[120px]"></div>
       <div className="bottom-0 flex fixed w-full px-4 bg-gray-100">
         <Link to="/" className="p-4 flex-grow">
-          <HomeIcon className="mx-auto"/>
+          <HomeIcon className="mx-auto" />
         </Link>
         <Link to="postos-de-vacinacao" className="p-4 flex-grow">
-          <LocationIcon />
+          <LocationIcon className="mx-auto" />
         </Link>
 
         <Link
           to="/"
           className="bg-syringe-gradient rounded-full h-[72px] w-[72px] -mt-8 flex items-center justify-center shadow"
         >
-          <SyringeIcon />
+          <SyringeIcon className="mx-auto" />
         </Link>
 
         <Link to="/calendario" className="p-4 flex-grow">
-          <CalendarIcon />
+          <CalendarIcon className="mx-auto" />
         </Link>
         <Link to="/" className="p-4 flex-grow">
-          <PersonIcon />
+          <PersonIcon className="mx-auto" />
         </Link>
       </div>
     </>
