@@ -33,7 +33,7 @@ export function Home() {
       <h1 className="text-xl -mt-9 mb-2 px-4">Entre e saiba mais:</h1>
       <div className="grid grid-cols-2 gap-4 px-4">
         <Link
-          to="/"
+          to="/postos-de-vacinacao"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <PlaceIcon />
@@ -61,7 +61,6 @@ export function Home() {
           Cadastro de dependentes
         </Link>
       </div>
-      
     </>
   );
 }

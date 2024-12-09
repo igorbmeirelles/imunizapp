@@ -15,7 +15,7 @@ function App() {
         <Link to="/" className="p-4 flex-grow">
           <HomeIcon />
         </Link>
-        <Link to="/" className="p-4 flex-grow">
+        <Link to="postos-de-vacinacao" className="p-4 flex-grow">
           <LocationIcon />
         </Link>
 
@@ -26,7 +26,7 @@ function App() {
           <SyringeIcon />
         </Link>
 
-        <Link to="/" className="p-4 flex-grow">
+        <Link to="/calendario" className="p-4 flex-grow">
           <CalendarIcon />
         </Link>
         <Link to="/" className="p-4 flex-grow">

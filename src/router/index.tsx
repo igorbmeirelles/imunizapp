@@ -4,6 +4,7 @@ import { Home } from "../pages/Home";
 import { Informacoes } from "../pages/Informacoes";
 import { Articles } from "../pages/Articles";
 import { Calendario } from "../pages/Calendario";
+import { Location } from "@/pages/Location";
 
 export function Router() {
   const router = createBrowserRouter([
@@ -24,9 +25,13 @@ export function Router() {
           element: <Articles />,
         },
         {
+          path: "postos-de-vacinacao",
+          element: <Location />,
+        },
+        {
           path: "/calendario",
           element: <Calendario />,
-        }
+        },
       ],
     },
   ]);
