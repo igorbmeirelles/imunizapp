@@ -4,6 +4,17 @@ import { useMemo, useState } from "react";
 import { ChevronLeft } from "../../components/icons/chevron_left";
 import { ChevronRight } from "../../components/icons/chevron_right";
 import { usePrismicDocumentsByType } from "@prismicio/react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { DatePicker } from "@/components/DatePicker";
+import { Button } from "@/components/ui/button";
 
 const daysOfWeek = ["Dom", "Seg", "Ter", "Qua", "Qui", "SEX", "SAB"];
 
@@ -14,12 +25,19 @@ export function Calendario() {
 
   const [document] = usePrismicDocumentsByType("calendario_de_vacinas");
 
+  const [userVaccines, setUserVaccines] = useState<
+    {
+      name: string;
+      date: Date;
+    }[]
+  >(JSON.parse(localStorage.getItem("vaccines") ?? "[]"));
+
   const vaccinesThisMonth = useMemo((): {
     name: string;
     startAt: Date;
     endsAt: Date;
   }[] => {
-    return (
+    const response = (
       document?.results[0].data.slices.map(
         (slice: {
           primary: { nome: string; comeca_em: string; temina_em: string };
@@ -41,8 +59,22 @@ export function Calendario() {
           };
         }
       ) ?? []
+    ).concat(
+      userVaccines
+        .filter((vaccine) => {
+          return (
+            selectedDate?.toLocaleDateString("pt-br") ===
+            new Date(vaccine?.date).toLocaleDateString("pt-br")
+          );
+        })
+        .map((vaccine) => ({
+          name: vaccine.name,
+          startAt: new Date(vaccine.date),
+          endsAt: new Date(vaccine.date),
+        }))
     );
-  }, [document]);
+    return response;
+  }, [document, userVaccines, selectedDate]);
 
   const vaccineForThisDate = useMemo(() => {
     return vaccinesThisMonth.filter((vaccine) => {
@@ -129,6 +161,27 @@ export function Calendario() {
     setSelectedDate(newDate);
   };
 
+  const [form, setForm] = useState<{ date: Date | undefined; name: string }>({
+    date: new Date(),
+    name: "",
+  });
+
+  const saveData = () => {
+    if (!(form.date && form.name)) {
+      alert("Preencha todos os campos");
+      return;
+    }
+
+    setUserVaccines((prev) => [form as { date: Date; name: string }, ...prev]);
+    localStorage.setItem(
+      "vaccines",
+      JSON.stringify([form as { date: Date; name: string }, ...userVaccines])
+    );
+
+    alert("Sua vacina foi salva.");
+
+    setForm({ date: new Date(), name: "" });
+  };
   return (
     <>
       <header className="gradient-purple p-4 h-[256px]">
@@ -213,13 +266,12 @@ export function Calendario() {
         </div>
       )}
 
-      {/* <div className="mt-4 flex px-5 sticky bottom-16">
+      <div className="mt-4 flex px-5 sticky bottom-16">
         <Dialog>
           <DialogTrigger asChild>
             <button
               className="p-4 rounded-full text-xl bg-purple-700 text-white aspect-square w-[64px] drop-shadow-xl ml-auto"
               type="button"
-              onClick={() => setDialogOpen(true)}
             >
               +
             </button>
@@ -230,22 +282,45 @@ export function Calendario() {
             </DialogHeader>
             <div className="flex items-center space-x-2">
               <div className="grid flex-1 gap-2">
-                <Input placeholder="Nome da vacina" />
+                <label>Nome da vacina</label>
+                <Input
+                  value={form.name}
+                  onChange={(value) =>
+                    setForm((prev) => ({ ...prev, name: value.target.value }))
+                  }
+                  placeholder="Nome da vacina"
+                />
+
+                <label>Dia</label>
+                <DatePicker
+                  date={form.date ?? new Date()}
+                  setDate={(date) =>
+                    setForm((prev) => ({ ...prev, date: date }))
+                  }
+                />
               </div>
             </div>
-            <DialogFooter className="sm:justify-start">
+            <DialogFooter className="grid grid-cols-2 gap-2 mt-4">
               <DialogClose asChild>
-                <button
-                  className="bg-purple-700 py-2 px-4 text-white rounded-lg inline-block"
+                <Button
+                  className="py-2 px-4 rounded-lg inline-block"
                   type="button"
+                  variant={"ghost"}
                 >
-                  Close
-                </button>
+                  Fechar
+                </Button>
               </DialogClose>
+              <Button
+                className="bg-purple-700 py-2 px-4 rounded-lg inline-block"
+                type="button"
+                onClick={saveData}
+              >
+                Salvar
+              </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </div> */}
+      </div>
     </>
   );
 }
