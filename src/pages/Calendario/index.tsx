@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowBackIcon } from "../../components/icons/back-arrow";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ChevronLeft } from "../../components/icons/chevron_left";
 import { ChevronRight } from "../../components/icons/chevron_right";
 import { usePrismicDocumentsByType } from "@prismicio/react";
@@ -31,6 +31,12 @@ export function Calendario() {
       date: Date;
     }[]
   >(JSON.parse(localStorage.getItem("vaccines") ?? "[]"));
+  const isSelectedDate = useCallback(
+    (date: Date) => {
+      return date.toDateString() === selectedDate.toDateString();
+    },
+    [selectedDate]
+  );
 
   const vaccinesThisMonth = useMemo((): {
     name: string;
@@ -38,27 +44,32 @@ export function Calendario() {
     endsAt: Date;
   }[] => {
     const response = (
-      document?.results[0].data.slices.map(
-        (slice: {
-          primary: { nome: string; comeca_em: string; temina_em: string };
-        }) => {
-          const startDate = slice.primary.comeca_em.split("-");
-          const endDate = slice.primary.temina_em.split("-");
-          return {
-            name: slice.primary.nome,
-            startAt: new Date(
-              Number(startDate[0]),
-              Number(startDate[1]) - 1,
-              Number(startDate[2])
-            ),
-            endsAt: new Date(
-              Number(endDate[0]),
-              Number(endDate[1]) - 1,
-              Number(endDate[2])
-            ),
-          };
-        }
-      ) ?? []
+      document?.results[0].data.slices
+        .map(
+          (slice: {
+            primary: { nome: string; comeca_em: string; temina_em: string };
+          }) => {
+            const startDate = slice.primary.comeca_em.split("-");
+            const endDate = slice.primary.temina_em.split("-");
+            return {
+              name: slice.primary.nome,
+              startAt: new Date(
+                Number(startDate[0]),
+                Number(startDate[1]) - 1,
+                Number(startDate[2])
+              ),
+              endsAt: new Date(
+                Number(endDate[0]),
+                Number(endDate[1]) - 1,
+                Number(endDate[2])
+              ),
+            };
+          }
+        )
+        .filter(
+          (vaccine: { startAt: Date; endsAt: Date }) =>
+            vaccine.startAt <= selectedDate && selectedDate <= vaccine.endsAt
+        ) ?? []
     ).concat(
       userVaccines
         .filter((vaccine) => {
@@ -149,10 +160,6 @@ export function Calendario() {
     return date.getMonth() === selectedDate.getMonth();
   };
 
-  const isSelectedDate = (date: Date) => {
-    return date.toDateString() === selectedDate.toDateString();
-  };
-
   const addMonth = (orientation: "increment" | "decrement") => {
     const newDate = new Date(selectedDate);
     newDate.setMonth(
@@ -161,6 +168,22 @@ export function Calendario() {
     setSelectedDate(newDate);
   };
 
+  const scheduleNotification = async (vaccine: {
+    name: string;
+    date: Date;
+  }) => {
+    if ("Notification" in window) {
+      await Notification.requestPermission();
+
+      if (Notification.permission === "granted") {
+        const notification = new Notification("Vacinação", {
+          body: `Você tem uma vacinação marcada para ${vaccine.date.toLocaleDateString(
+            "pt-BR"
+          )} com a vacina ${vaccine.name}`,
+        });
+      }
+    }
+  };
   const [form, setForm] = useState<{ date: Date | undefined; name: string }>({
     date: new Date(),
     name: "",
