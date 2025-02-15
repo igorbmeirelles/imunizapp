@@ -14,3 +14,7 @@ h2 {
 p + h2 {
   margin-top: 1.5rem;
 }
+
+strong {
+  font-weight: 500 !important;
+}

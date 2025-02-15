@@ -4,11 +4,14 @@ import "./index.css";
 import { Router } from "./router/index.tsx";
 import { PrismicProvider } from "@prismicio/react";
 import { client } from "./prismic";
+import { UserProvider } from "./context/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <PrismicProvider client={client}>
-      <Router />
+      <UserProvider>
+        <Router />
+      </UserProvider>
     </PrismicProvider>
   </StrictMode>
 );
