@@ -43,8 +43,8 @@ export function Calendario() {
     startAt: Date;
     endsAt: Date;
   }[] => {
-    const response = (
-      document?.results[0].data.slices
+    const response =
+      document?.results[0]?.data.slices
         .map(
           (slice: {
             primary: { nome: string; comeca_em: string; temina_em: string };
@@ -69,8 +69,9 @@ export function Calendario() {
         .filter(
           (vaccine: { startAt: Date; endsAt: Date }) =>
             vaccine.startAt <= selectedDate && selectedDate <= vaccine.endsAt
-        ) ?? []
-    ).concat(
+        ) ?? [];
+
+    const result = response.concat(
       userVaccines
         .filter((vaccine) => {
           return (
@@ -84,7 +85,7 @@ export function Calendario() {
           endsAt: new Date(vaccine.date),
         }))
     );
-    return response;
+    return result;
   }, [document, userVaccines, selectedDate]);
 
   const vaccineForThisDate = useMemo(() => {
@@ -168,22 +169,22 @@ export function Calendario() {
     setSelectedDate(newDate);
   };
 
-  const scheduleNotification = async (vaccine: {
-    name: string;
-    date: Date;
-  }) => {
-    if ("Notification" in window) {
-      await Notification.requestPermission();
+  // const scheduleNotification = async (vaccine: {
+  //   name: string;
+  //   date: Date;
+  // }) => {
+  //   if ("Notification" in window) {
+  //     await Notification.requestPermission();
 
-      if (Notification.permission === "granted") {
-        const notification = new Notification("Vacinação", {
-          body: `Você tem uma vacinação marcada para ${vaccine.date.toLocaleDateString(
-            "pt-BR"
-          )} com a vacina ${vaccine.name}`,
-        });
-      }
-    }
-  };
+  //     if (Notification.permission === "granted") {
+  //       const notification = new Notification("Vacinação", {
+  //         body: `Você tem uma vacinação marcada para ${vaccine.date.toLocaleDateString(
+  //           "pt-BR"
+  //         )} com a vacina ${vaccine.name}`,
+  //       });
+  //     }
+  //   }
+  // };
   const [form, setForm] = useState<{ date: Date | undefined; name: string }>({
     date: new Date(),
     name: "",
