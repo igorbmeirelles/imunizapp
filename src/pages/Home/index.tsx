@@ -59,7 +59,7 @@ export function Home() {
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <CalendarIcon color="#713EA2" />
-          Datas de vacinação
+          Agenda de vacinas
         </Link>
         <Link
           to="/"
@@ -68,6 +68,18 @@ export function Home() {
           <SolarPeopleIcon />
           Cadastro de dependentes
         </Link>
+        <a
+          href="https://meususdigital.saude.gov.br/login"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Logo_SUS.svg"
+            className="w-[56px] h-[56px] rounded-full"
+          />
+          Acesse o SUS Digital
+        </a>
       </div>
     </>
   );
