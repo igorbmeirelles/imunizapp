@@ -6,6 +6,7 @@ import { Articles } from "../pages/Articles";
 import { Calendario } from "../pages/Calendario";
 import { Location } from "@/pages/Location";
 import { About } from "@/pages/About";
+import { VaccinesCard } from "../pages/VaccinesCard";
 
 export function Router() {
   const router = createBrowserRouter([
@@ -36,7 +37,11 @@ export function Router() {
         {
           path: "/sobre",
           element: <About />
-        }
+        },
+        {
+          path: "/cartao-de-vacinas",
+          element: <VaccinesCard />,
+        },
       ],
     },
   ]);

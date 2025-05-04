@@ -80,6 +80,13 @@ export function Home() {
           />
           Acesse o SUS Digital
         </a>
+        <Link
+          to="/cartao-de-vacinas"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <div className="text-4xl">💉</div>
+          Cartão de vacinas
+        </Link>
       </div>
     </>
   );
