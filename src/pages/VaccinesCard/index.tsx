@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { get, set } from 'idb-keyval';
 
 export function VaccinesCard() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedImage = localStorage.getItem('vaccine_image');
-    if (savedImage) setImageSrc(savedImage);
+    get('vaccine_image').then((savedImage) => {
+      if (typeof savedImage === 'string') {
+        setImageSrc(savedImage);
+      }
+    });
   }, []);
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,10 +17,15 @@ export function VaccinesCard() {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      setImageSrc(result);
-      localStorage.setItem('vaccine_image', result);
+    reader.onloadend = () => {
+      const result = reader.result;
+      if (typeof result === 'string') {
+        set('vaccine_image', result).then(() => {
+          setImageSrc(result);
+        });
+      } else {
+        console.error('Falha ao ler a imagem.');
+      }
     };
     reader.readAsDataURL(file);
   };
