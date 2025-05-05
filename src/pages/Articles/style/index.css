@@ -15,7 +15,7 @@ h2 {
   z-index: 9;
 }
 
-p + h2, p + p, p {
+p + h2, p + p, p, li + li {
   margin-top: 1.5rem;
 }
 
