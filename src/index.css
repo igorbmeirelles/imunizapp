@@ -104,3 +104,8 @@ h1 {
     @apply bg-background text-foreground;
   }
 }
+
+h2{
+  position: sticky;
+  top: 0
+}
