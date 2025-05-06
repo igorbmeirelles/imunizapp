@@ -41,18 +41,18 @@ export function Home() {
       <h1 className="text-xl -mt-9 mb-2 px-4">Entre e saiba mais:</h1>
       <div className="grid grid-cols-2 gap-4 px-4">
         <Link
-          to="/postos-de-vacinacao"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <PlaceIcon />
-          Postos de vacinação
-        </Link>
-        <Link
           to="/informacoes"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <SyringeSmallIcon />
           Informações
+        </Link>
+        <Link
+          to="/postos-de-vacinacao"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <PlaceIcon />
+          Postos de vacinação
         </Link>
         <Link
           to="/calendario"
@@ -80,6 +80,12 @@ export function Home() {
           />
           Acesse o SUS Digital
         </a>
+        <Link
+          to="/chatbot"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <div className="text-4xl">🤖</div> Assistente Virtual
+        </Link>
         <Link
           to="/cartao-de-vacinas"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
