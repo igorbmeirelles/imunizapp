@@ -7,6 +7,7 @@ import { Calendario } from "../pages/Calendario";
 import { Location } from "@/pages/Location";
 import { About } from "@/pages/About";
 import { VaccinesCard } from "../pages/VaccinesCard";
+import { ChatBot } from "../pages/ChatBot";
 
 export function Router() {
   const router = createBrowserRouter([
@@ -41,6 +42,10 @@ export function Router() {
         {
           path: "/cartao-de-vacinas",
           element: <VaccinesCard />,
+        },
+        {
+          path: "/chatbot",
+          element: <ChatBot />,
         },
       ],
     },
