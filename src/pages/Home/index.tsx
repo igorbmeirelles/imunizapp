@@ -5,7 +5,8 @@ import { SyringeSmallIcon } from "../../components/icons/syringe-small";
 import { CalendarIcon } from "../../components/icons/calendar";
 import { SolarPeopleIcon } from "../../components/icons/solar-people";
 import { useUser } from "@/hooks";
-
+import video from "@/assets/gotinha.mp4";
+import { BookOpenCheckIcon, BookOpenIcon } from "lucide-react";
 export function Home() {
   const { userInfo } = useUser();
 
@@ -84,13 +85,23 @@ export function Home() {
           to="/chatbot"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
-          <div className="text-4xl">🤖</div> Assistente Virtual
+          <div className="text-4xl">
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-[30px] h-[30px]"
+            />
+          </div>{" "}
+          Assistente Virtual
         </Link>
         <Link
           to="/cartao-de-vacinas"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
-          <div className="text-4xl">💉</div>
+          <div className="text-4xl"><BookOpenIcon className="w-6 h-6 text-[#713EA2]" /></div>
           Cartão de vacinas
         </Link>
       </div>
