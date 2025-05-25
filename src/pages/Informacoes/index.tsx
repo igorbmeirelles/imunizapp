@@ -11,12 +11,12 @@ export function Informacoes() {
   const data = useMemo(() => {
     return (
       documents?.map((document) => {
-        const sliceInfo = document.data.slices[0].primary;
+        console.log(document);
 
         return {
           uuid: document.uid,
-          titulo: sliceInfo.titulo_botao,
-          imagem: sliceInfo.icone_botao.url,
+          titulo: document.data.titulo_do_icone,
+          imagem: document.data.icone?.url,
         };
       }) ?? []
     );
