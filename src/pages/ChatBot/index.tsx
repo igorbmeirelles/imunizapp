@@ -67,7 +67,7 @@ export function ChatBot() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-84px)] bg-gray-50">
+    <div className="flex flex-col h-[calc(100svh-84px)] bg-gray-50">
       <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4 pb-[100px]">
         {messages.map((msg, idx) => (
           <div
