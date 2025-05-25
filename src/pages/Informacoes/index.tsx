@@ -37,23 +37,25 @@ export function Informacoes() {
         </div>
       </header>
       <main className="bg-white -mt-[172px] gap-4 rounded-tr-[52px] pt-12 grid grid-cols-2 px-4">
-        {data.map((item) => (
-          <Link
-            to={`/post/${item.uuid}`}
-            key={item.uuid}
-            className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-          >
-            <img
-              src={item.imagem}
-              alt="Icone"
-              className="max-w-[54px] max-h-[54px]"
-            />
-            {item.titulo}
-          </Link>
-        ))}
+        {data
+          .filter((data) => data.uuid != "o-que-sao-vacinas")
+          .map((item) => (
+            <Link
+              to={`/post/${item.uuid}`}
+              key={item.uuid}
+              className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+            >
+              <img
+                src={item.imagem}
+                alt="Icone"
+                className="max-w-[54px] max-h-[54px]"
+              />
+              {item.titulo}
+            </Link>
+          ))}
 
         <Link
-          to="/post/informacoes_duvidas_frequentes?by=type"
+          to="/post/o-que-sao-vacinas"
           className="col-span-2 p-6 flex flex-col items-center justify-center bg-[#AC85D0] text-white rounded-xl mt-4"
         >
           <SearchIcon />
