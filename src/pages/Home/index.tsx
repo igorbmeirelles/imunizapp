@@ -46,7 +46,7 @@ export function Home() {
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <SyringeSmallIcon />
-          Informações
+          Vacinas
         </Link>
         <Link
           to="/postos-de-vacinacao"
@@ -60,7 +60,7 @@ export function Home() {
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <CalendarIcon color="#713EA2" />
-          Agenda de vacinas
+          Anote na agenda
         </Link>
         <Link
           to="/"
@@ -101,8 +101,10 @@ export function Home() {
           to="/cartao-de-vacinas"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
-          <div className="text-4xl"><BookOpenIcon className="w-6 h-6 text-[#713EA2]" /></div>
-          Cartão de vacinas
+          <div className="text-4xl">
+            <BookOpenIcon className="w-6 h-6 text-[#713EA2]" />
+          </div>
+          Salve a foto do seu cartão
         </Link>
       </div>
     </>
