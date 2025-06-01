@@ -43,7 +43,7 @@ function App() {
             />
             <div>
               <p className="text-sm font-light">Olá, {inputName}</p>
-              <p className="text-sm font-light">Bem-vindo ao Imunizapp</p>
+              <p className="text-sm font-light">Bem-vindo ao Mais Vacinas</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">

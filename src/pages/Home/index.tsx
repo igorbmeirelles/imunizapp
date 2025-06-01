@@ -30,7 +30,7 @@ export function Home() {
                     Olá, {userInfo.name}
                   </p>
                   <p className="text-white text-sm font-light">
-                    Bem-vindo ao Imunizapp
+                    Bem-vindo ao Mais Vacinas
                   </p>
                 </div>
               </aside>
