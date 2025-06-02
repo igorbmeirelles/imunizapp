@@ -82,22 +82,6 @@ export function Home() {
           Acesse o SUS Digital
         </a>
         <Link
-          to="/chatbot"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <div className="text-4xl">
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-[30px] h-[30px]"
-            />
-          </div>{" "}
-          Assistente Virtual
-        </Link>
-        <Link
           to="/cartao-de-vacinas"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
@@ -105,6 +89,30 @@ export function Home() {
             <BookOpenIcon className="w-6 h-6 text-[#713EA2]" />
           </div>
           Salve a foto do seu cartão
+        </Link>
+        <Link
+          to="/chatbot"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <div className="text-4xl">
+            <img
+              src="https://ugc.production.linktr.ee/a513d23e-168f-4f28-ac00-4dea355caf78_b50755fe-ef45-4e44-bb6c-9f96c7f6b17c.gif?io=true&size=avatar-v3_0"
+              className="w-[40px] h-[40px]"
+            />
+          </div>
+          Assistente Virtual
+        </Link>
+        <Link
+          to="/post/reacoes-locais-e-efeitos-colaterais"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <div className="text-4xl">
+            <img
+              src="https://ugc.production.linktr.ee/a513d23e-168f-4f28-ac00-4dea355caf78_b50755fe-ef45-4e44-bb6c-9f96c7f6b17c.gif?io=true&size=avatar-v3_0"
+              className="w-[40px] h-[40px]"
+            />
+          </div>
+          Reações e efeitos colaterais
         </Link>
       </div>
     </>

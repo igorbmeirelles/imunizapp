@@ -10,15 +10,21 @@ export function Informacoes() {
 
   const data = useMemo(() => {
     return (
-      documents?.map((document) => {
-        console.log(document);
-
-        return {
-          uuid: document.uid,
-          titulo: document.data.titulo_do_icone,
-          imagem: document.data.icone?.url,
-        };
-      }) ?? []
+      documents
+        ?.map((document) => {
+          return {
+            uuid: document.uid,
+            titulo: document.data.titulo_do_icone,
+            imagem: document.data.icone?.url,
+          };
+        })
+        .filter(
+          (document) =>
+            ![
+              "reacoes-locais-e-efeitos-colaterais",
+              "informacoes_duvidas_frequentes",
+            ].includes(document.uuid ?? "")
+        ) ?? []
     );
   }, [documents]);
 
