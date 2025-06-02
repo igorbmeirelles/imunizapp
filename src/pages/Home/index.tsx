@@ -5,7 +5,7 @@ import { SyringeSmallIcon } from "../../components/icons/syringe-small";
 import { CalendarIcon } from "../../components/icons/calendar";
 import { SolarPeopleIcon } from "../../components/icons/solar-people";
 import { useUser } from "@/hooks";
-import video from "@/assets/gotinha.mp4";
+
 import { BookOpenIcon } from "lucide-react";
 export function Home() {
   const { userInfo } = useUser();
