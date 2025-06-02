@@ -112,7 +112,7 @@ export function Home() {
               className="w-[40px] h-[40px]"
             />
           </div>
-          Reações e efeitos colaterais
+          Reações e efeitos locais
         </Link>
       </div>
     </>
