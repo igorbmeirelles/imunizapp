@@ -7,6 +7,7 @@ import { SolarPeopleIcon } from "../../components/icons/solar-people";
 import { useUser } from "@/hooks";
 
 import { BookOpenIcon } from "lucide-react";
+import { BubblesIcon } from "@/components/icons/bubbles";
 export function Home() {
   const { userInfo } = useUser();
 
@@ -107,10 +108,7 @@ export function Home() {
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <div className="text-4xl">
-            <img
-              src="https://ugc.production.linktr.ee/a513d23e-168f-4f28-ac00-4dea355caf78_b50755fe-ef45-4e44-bb6c-9f96c7f6b17c.gif?io=true&size=avatar-v3_0"
-              className="w-[40px] h-[40px]"
-            />
+            <BubblesIcon />
           </div>
           Reações e efeitos locais
         </Link>
