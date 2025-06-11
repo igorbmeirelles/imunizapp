@@ -23,6 +23,7 @@ export function Informacoes() {
             ![
               "reacoes-locais-e-efeitos-colaterais",
               "informacoes_duvidas_frequentes",
+              "curiosidades"
             ].includes(document.uuid ?? "")
         ) ?? []
     );

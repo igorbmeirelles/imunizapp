@@ -8,6 +8,7 @@ import { Location } from "@/pages/Location";
 import { About } from "@/pages/About";
 import { VaccinesCard } from "../pages/VaccinesCard";
 import { ChatBot } from "../pages/ChatBot";
+import { CoberturaNacional } from "@/pages/CoberturaNacional";
 
 export function Router() {
   const router = createBrowserRouter([
@@ -37,7 +38,7 @@ export function Router() {
         },
         {
           path: "/sobre",
-          element: <About />
+          element: <About />,
         },
         {
           path: "/cartao-de-vacinas",
@@ -46,6 +47,10 @@ export function Router() {
         {
           path: "/chatbot",
           element: <ChatBot />,
+        },
+        {
+          path: "/cobertura",
+          element: <CoberturaNacional />,
         },
       ],
     },

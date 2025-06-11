@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useUser } from "./hooks";
+import { CircleHelpIcon, ChartNoAxesCombinedIcon } from "lucide-react";
 
 function App() {
   const {
@@ -90,6 +91,10 @@ function App() {
           <LocationIcon className="mx-auto" />
         </Link>
 
+        <Link to="cobertura" className="p-4 flex-grow">
+          <ChartNoAxesCombinedIcon className="mx-auto" />
+        </Link>
+
         <Link
           to="/informacoes"
           className="bg-syringe-gradient rounded-full h-[72px] w-[72px] -mt-8 flex items-center justify-center shadow"
@@ -102,6 +107,9 @@ function App() {
         </Link>
         <Link to="/sobre" className="p-4 flex-grow">
           <PersonIcon className="mx-auto" />
+        </Link>
+        <Link to="/post/curiosidades" className="p-4 flex-grow">
+          <CircleHelpIcon className="mx-auto" />
         </Link>
       </div>
     </>

@@ -45,7 +45,6 @@ export function Articles() {
   };
 
   const slices = useMemo(() => {
-    console.log(document?.data.slices);
     return (
       (document?.data.slices as Slice[])?.filter(
         (slice: Slice) => slice.slice_type === "caixa_suspensa"
