@@ -4,7 +4,6 @@ import { HomeIcon } from "./components/icons/home";
 import { LocationIcon } from "./components/icons/location";
 import { SyringeIcon } from "./components/icons/syringe";
 import { CalendarIcon } from "./components/icons/calendar";
-import { PersonIcon } from "./components/icons/person";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useUser } from "./hooks";
-import { CircleHelpIcon, ChartNoAxesCombinedIcon } from "lucide-react";
+import { CircleHelpIcon, ChartNoAxesCombinedIcon, UsersIcon } from "lucide-react";
 
 function App() {
   const {
@@ -106,7 +105,7 @@ function App() {
           <CalendarIcon className="mx-auto" />
         </Link>
         <Link to="/sobre" className="p-4 flex-grow">
-          <PersonIcon className="mx-auto" />
+          <UsersIcon className="mx-auto" />
         </Link>
         <Link to="/post/curiosidades" className="p-4 flex-grow">
           <CircleHelpIcon className="mx-auto" />
