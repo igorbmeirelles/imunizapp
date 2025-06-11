@@ -91,6 +91,17 @@ export function Home() {
           </div>
           Salve a foto do seu cartão
         </Link>
+
+        <Link
+          to="/post/reacoes-locais-e-efeitos-colaterais"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <div className="text-4xl">
+            <BubblesIcon />
+          </div>
+          Reações e efeitos locais
+        </Link>
+
         <Link
           to="/chatbot"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
@@ -102,15 +113,6 @@ export function Home() {
             />
           </div>
           Assistente Virtual
-        </Link>
-        <Link
-          to="/post/reacoes-locais-e-efeitos-colaterais"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <div className="text-4xl">
-            <BubblesIcon />
-          </div>
-          Reações e efeitos locais
         </Link>
       </div>
     </>
