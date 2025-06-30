@@ -104,7 +104,7 @@ function App() {
         <Link to="/calendario" className="p-4 flex-grow">
           <CalendarIcon className="mx-auto" />
         </Link>
-        <Link to="/sobre" className="p-4 flex-grow">
+        <Link to="/post/sobre" className="p-4 flex-grow">
           <UsersIcon className="mx-auto" />
         </Link>
         <Link to="/post/curiosidades" className="p-4 flex-grow">

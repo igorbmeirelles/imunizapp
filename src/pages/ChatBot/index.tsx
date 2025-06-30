@@ -42,11 +42,12 @@ export function ChatBot() {
         },
       });
       const data = await response.json();
-
+      console.log(data)
       const assistantMessage: Message = { role: 'assistant', content: data.answer };
       setMessages((prev) => [...prev, assistantMessage]);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
+      debugger
       setMessages((prev) => [
         ...prev,
         {
