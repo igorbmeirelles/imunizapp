@@ -3,7 +3,6 @@ import { PlaceIcon } from "../../components/icons/place";
 import { Shape } from "../../components/shape";
 import { SyringeSmallIcon } from "../../components/icons/syringe-small";
 import { CalendarIcon } from "../../components/icons/calendar";
-import { SolarPeopleIcon } from "../../components/icons/solar-people";
 import { useUser } from "@/hooks";
 
 import { BookOpenIcon } from "lucide-react";
@@ -62,13 +61,6 @@ export function Home() {
         >
           <CalendarIcon color="#713EA2" />
           Anote na agenda
-        </Link>
-        <Link
-          to="/"
-          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
-        >
-          <SolarPeopleIcon />
-          Cadastro de dependentes
         </Link>
         <a
           href="https://meususdigital.saude.gov.br/login"
