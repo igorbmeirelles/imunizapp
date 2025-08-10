@@ -11,22 +11,23 @@ export function Informacoes() {
   const data = useMemo(() => {
     return (
       documents
-        ?.map((document) => {
-          return {
-            uuid: document.uid,
-            titulo: document.data.titulo_do_icone,
-            imagem: document.data.icone?.url,
-          };
-        })
-        .filter(
-          (document) =>
-            ![
-              "reacoes-locais-e-efeitos-colaterais",
-              "informacoes_duvidas_frequentes",
-              "curiosidades",
-              "sobre"
-            ].includes(document.uuid ?? "")
-        ) ?? []
+      ?.map((document) => {
+        return {
+        uuid: document.uid,
+        titulo: document.data.titulo_do_icone,
+        imagem: document.data.icone?.url,
+        };
+      })
+      .filter(
+        (document) =>
+        ![
+          "reacoes-locais-e-efeitos-colaterais",
+          "informacoes_duvidas_frequentes",
+          "curiosidades",
+          "sobre"
+        ].includes(document.uuid ?? "")
+      )
+      .sort((a, b) => a.titulo.localeCompare(b.titulo)) ?? []
     );
   }, [documents]);
 
