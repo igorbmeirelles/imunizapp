@@ -1,9 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
 import { HomeIcon } from "./components/icons/home";
-import { LocationIcon } from "./components/icons/location";
 import { SyringeIcon } from "./components/icons/syringe";
-import { CalendarIcon } from "./components/icons/calendar";
 import {
   Dialog,
   DialogContent,
