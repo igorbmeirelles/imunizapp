@@ -11,7 +11,13 @@ type Message = {
 };
 
 export function ChatBot() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      content:
+        "Bem-vindo ao assistente virtual! Deixe sua pergunta sobre vacinas na caixa de texto.",
+      role: "assistant",
+    },
+  ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -59,7 +65,7 @@ export function ChatBot() {
       setMessages((prev) => [...prev, assistantMessage]);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
-      console.log(_)
+      console.log(_);
     } finally {
       setIsLoading(false);
     }

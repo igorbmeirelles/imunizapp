@@ -64,7 +64,7 @@ export function Informacoes() {
           ))}
 
         <Link
-          to="/post/o-que-sao-vacinas"
+          to="/post/curiosidades"
           className="col-span-2 p-6 flex flex-col items-center justify-center bg-[#AC85D0] text-white rounded-xl mt-4"
         >
           <SearchIcon />

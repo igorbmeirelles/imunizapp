@@ -86,9 +86,6 @@ function App() {
         <Link to="/" className="p-4 flex-grow">
           <HomeIcon className="mx-auto" />
         </Link>
-        <Link to="postos-de-vacinacao" className="p-4 flex-grow">
-          <LocationIcon className="mx-auto" />
-        </Link>
 
         <Link to="cobertura" className="p-4 flex-grow">
           <ChartNoAxesCombinedIcon className="mx-auto" />
@@ -101,9 +98,6 @@ function App() {
           <SyringeIcon className="mx-auto" />
         </Link>
 
-        <Link to="/calendario" className="p-4 flex-grow">
-          <CalendarIcon className="mx-auto" />
-        </Link>
         <Link to="/post/sobre" className="p-4 flex-grow">
           <UsersIcon className="mx-auto" />
         </Link>

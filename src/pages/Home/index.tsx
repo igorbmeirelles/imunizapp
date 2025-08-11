@@ -106,6 +106,19 @@ export function Home() {
           </div>
           Assistente Virtual
         </Link>
+
+        <a
+          href="https://cadernetadacrianca.saude.gov.br/minha-familia"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+        >
+          <img
+            src="/src/assets/hands.jpeg"
+            className="w-[56px] h-[56px] rounded-full"
+          />
+          Caderneta da criança
+        </a>
       </div>
     </>
   );
