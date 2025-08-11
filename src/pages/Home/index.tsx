@@ -7,6 +7,8 @@ import { useUser } from "@/hooks";
 
 import { BookOpenIcon } from "lucide-react";
 import { BubblesIcon } from "@/components/icons/bubbles";
+import HandImage from "@/assets/hands.jpeg";
+
 export function Home() {
   const { userInfo } = useUser();
 
@@ -114,7 +116,7 @@ export function Home() {
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
           <img
-            src="/src/assets/hands.jpeg"
+            src={HandImage}
             className="w-[56px] h-[56px] rounded-full"
           />
           Caderneta da criança
