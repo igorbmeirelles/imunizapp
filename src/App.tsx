@@ -13,7 +13,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useUser } from "./hooks";
-import { CircleHelpIcon, ChartNoAxesCombinedIcon, UsersIcon } from "lucide-react";
+import {
+  CircleHelpIcon,
+  ChartNoAxesCombinedIcon,
+  UsersIcon,
+} from "lucide-react";
+import { LightBulb } from "./components/icons/light-bulb";
 
 function App() {
   const {
@@ -78,7 +83,17 @@ function App() {
 
   return (
     <>
+      <div className="p-2 bg-purple-900">
+        <a
+          href="https://forms.gle/kXM4czn2txe6zne5A"
+          target="__blank"
+          className="text-white text-sm font-light flex underline justify-center"
+        >
+          <LightBulb /> clique aqui e deixe sua opinião
+        </a>
+      </div>
       <Outlet />
+
       <div className="mt-[120px]"></div>
       <div className="bottom-0 flex fixed w-full px-4 bg-gray-100">
         <Link to="/" className="p-4 flex-grow">

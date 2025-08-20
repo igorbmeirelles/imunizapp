@@ -8,6 +8,7 @@ import { useUser } from "@/hooks";
 import { BookOpenIcon } from "lucide-react";
 import { BubblesIcon } from "@/components/icons/bubbles";
 import HandImage from "@/assets/hands.jpeg";
+import { LightBulb } from "@/components/icons/light-bulb";
 
 export function Home() {
   const { userInfo } = useUser();
@@ -18,7 +19,7 @@ export function Home() {
         <header className="relative">
           <Shape />
           <div className="absolute inset-0 p-4">
-            <div className="flex">
+            <div className="flex  grow-1">
               <aside className="flex gap-4 items-center">
                 <img
                   src={
@@ -115,10 +116,7 @@ export function Home() {
           rel="noopener noreferrer"
           className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
         >
-          <img
-            src={HandImage}
-            className="w-[56px] h-[56px] rounded-full"
-          />
+          <img src={HandImage} className="w-[56px] h-[56px] rounded-full" />
           Caderneta da criança
         </a>
       </div>
