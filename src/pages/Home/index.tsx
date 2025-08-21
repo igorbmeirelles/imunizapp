@@ -8,7 +8,6 @@ import { useUser } from "@/hooks";
 import { BookOpenIcon } from "lucide-react";
 import { BubblesIcon } from "@/components/icons/bubbles";
 import HandImage from "@/assets/hands.jpeg";
-import { LightBulb } from "@/components/icons/light-bulb";
 
 export function Home() {
   const { userInfo } = useUser();
