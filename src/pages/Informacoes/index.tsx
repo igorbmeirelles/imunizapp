@@ -11,26 +11,41 @@ export function Informacoes() {
   const data = useMemo(() => {
     return (
       documents
-      ?.map((document) => {
-        return {
-        uuid: document.uid,
-        titulo: document.data.titulo_do_icone,
-        imagem: document.data.icone?.url,
-        };
-      })
-      .filter(
-        (document) =>
-        ![
-          "reacoes-locais-e-efeitos-colaterais",
-          "informacoes_duvidas_frequentes",
-          "curiosidades",
-          "sobre"
-        ].includes(document.uuid ?? "")
-      )
-      .sort((a, b) => a.titulo.localeCompare(b.titulo)) ?? []
+        ?.map((document) => {
+          return {
+            uuid: document.uid,
+            titulo: document.data.titulo_do_icone,
+            imagem: document.data.icone?.url,
+          };
+        })
+        .filter(
+          (document) =>
+            ![
+              "reacoes-locais-e-efeitos-colaterais",
+              "informacoes_duvidas_frequentes",
+              "curiosidades",
+              "sobre",
+              "saibamais",
+            ].includes(document.uuid ?? "")
+        )
+        .sort((a, b) => a.titulo.localeCompare(b.titulo)) ?? []
     );
   }, [documents]);
 
+  const knowMore = useMemo(() => {
+    return (
+      documents
+        ?.map((document) => {
+          return {
+            uuid: document.uid,
+            titulo: document.data.titulo_do_icone,
+            imagem: document.data.icone?.url,
+          };
+        })
+        .filter((document) => ["saibamais"].includes(document.uuid ?? ""))
+        .sort((a, b) => a.titulo.localeCompare(b.titulo)) ?? []
+    );
+  }, [documents]);
   if (stateInfo.state !== "loaded") {
     return <div></div>;
   }
@@ -62,6 +77,21 @@ export function Informacoes() {
               {item.titulo}
             </Link>
           ))}
+
+        {knowMore.map((item) => (
+          <Link
+            to={`/post/${item.uuid}`}
+            key={item.uuid}
+            className="min-h-full p-4 shadow-md rounded-xl text-start flex justify-between flex-col gap-4"
+          >
+            <img
+              src={item.imagem}
+              alt="Icone"
+              className="max-w-[54px] max-h-[54px]"
+            />
+            {item.titulo}
+          </Link>
+        ))}
 
         <Link
           to="/post/curiosidades"
