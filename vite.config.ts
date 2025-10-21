@@ -8,6 +8,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      includeAssets: [
+        "./*",
+      ],
       manifest: {
         name: "Mais Vacinas",
         short_name: "Mais Vacinas",
